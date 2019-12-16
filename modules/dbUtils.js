@@ -133,4 +133,4 @@ module.exports.deleteMany=function(collection,whereObj,cb){
             cb(err, results);
         })
     });
-}
+};
