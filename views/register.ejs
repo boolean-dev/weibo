@@ -1,0 +1,33 @@
+<main role="main">
+    <div class="container">
+        <form class="form-horizontal" method="post" action="/users/register">
+            <div class="text-center mb-4">
+                <img class="mb-4" src="/images/bootstrap-solid.svg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text"  id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
+                <label for="inputEmail">用户名</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="password1" name="password1" class="form-control" placeholder="密码" required>
+                <label for="inputPassword">密码</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="password1" name="password2" class="form-control" placeholder="确认密码" required>
+                <label for="inputPassword">确认密码</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2019</p>
+        </form>
+    </div>
+</main>
