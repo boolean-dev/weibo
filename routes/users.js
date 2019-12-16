@@ -2,6 +2,7 @@ var express = require('express');
 var crypto = require('crypto');
 var router = express.Router();
 var User = require('../modules/user');
+let check = require('../filter/check');
 
 var dbUtils = require('../modules/dbUtils');
 
@@ -15,11 +16,11 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/toLogin', function (req, res, next) {
-    res.render('login', {msg: '', user: req.session.user});
+router.get('/toLogin',check.checkNotLogin,  function (req, res, next) {
+    res.render('login', {msg: '', user: req.session.user, title:'登录'});
 });
 
-router.post('/login', function (req, res, next) {
+router.post('/login', check.checkNotLogin, function (req, res, next) {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -50,14 +51,14 @@ router.post('/login', function (req, res, next) {
 });
 
 // 注册
-router.get('/toRegister', function (req, res, next) {
+router.get('/toRegister', check.checkNotLogin, function (req, res, next) {
     console.log(req.body);
     console.log(req.params);
-    res.render('register', {msg: '', user: req.session.user});
+    res.render('register', {msg: '', user: req.session.user, title:'注册'});
 });
 
 // 注册
-router.post('/register', function (req, res, next) {
+router.post('/register', check.checkNotLogin, function (req, res, next) {
     console.log('注册成功,用户名=' + req.body.username + "，密码1=" + req.body.password + "，密码2=" + req.body.confirmPassword);
 
     let username = req.body.username;
@@ -101,7 +102,7 @@ router.post('/register', function (req, res, next) {
     });
 });
 
-router.get('/logout', function (req, res, next){
+router.get('/logout', check.checkLogin, function (req, res, next){
     req.session.user = null;
     req.flash('msg', '退出成功！！');
     res.redirect('/');

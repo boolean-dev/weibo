@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' , msg: '', user: req.session.user});
+  res.render('index', { msg: '', user: req.session.user, title:'主页'});
 });
 
 module.exports = router;
