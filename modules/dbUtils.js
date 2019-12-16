@@ -111,13 +111,13 @@ module.exports.updateMany=function(collection,whereObj,upObj,cb){
 }
 /**********************删除**************************************/
 //根据ID来删除一条记录
-module.exports.deleteOneById=function(collection,id,cb){
-    _connect(function(db) {
+module.exports.deleteOneById = function (collection, id, cb) {
+    _connect(function (db) {
         db.collection(collection).deleteOne({_id: mongodb.ObjectId(id)}, function (err, results) {
             cb(err, results);
         })
     });
-}
+};
 //删除一条记录
 module.exports.deleteOne=function(collection,whereObj,cb){
     _connect(function(db) {
