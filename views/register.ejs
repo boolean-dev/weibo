@@ -5,6 +5,11 @@
                 <img class="mb-4" src="/images/bootstrap-solid.svg" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
             </div>
+            <%if (msg) { %>
+            <div class="form-label-group">
+                <div class="alert alert-danger" role="alert"><%= msg %></div>
+            </div>
+            <% } %>
 
             <div class="form-label-group">
                 <input type="text"  id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
@@ -12,12 +17,12 @@
             </div>
 
             <div class="form-label-group">
-                <input type="password" id="password1" name="password1" class="form-control" placeholder="密码" required>
+                <input type="password" id="password1" name="password" class="form-control" placeholder="密码" required>
                 <label for="inputPassword">密码</label>
             </div>
 
             <div class="form-label-group">
-                <input type="password" id="password1" name="password2" class="form-control" placeholder="确认密码" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="确认密码" required>
                 <label for="inputPassword">确认密码</label>
             </div>
 

@@ -73,7 +73,7 @@ module.exports.find=function(collection,obj,cb){
 * 查找一条记录*/
 module.exports.findOne=function(collection,whereObj,cb){
     _connect(function(db) {
-        db.collection(collection).findOne(obj, function (err, results) {
+        db.collection(collection).findOne(whereObj, function (err, results) {
             cb(err, results);
         });
     });
