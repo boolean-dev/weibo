@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 var session = require("express-session");
+let flash = require('connect-flash');
 
 var MongoStore = require('connect-mongo')(session);
 var settings = require('./config/mongodb');
@@ -39,6 +40,8 @@ app.use(session({
     touchAfter: 24 * 3600   // 通过这样做，设置touchAfter:24 * 3600，您在24小时内只更新一次会话，不管有多少请求(除了在会话数据上更改某些内容的除外)
   })
 }));
+
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

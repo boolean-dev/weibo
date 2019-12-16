@@ -1,21 +1,20 @@
-<div class="jumbotron">
-    <!--<div class="container">
-      <h1 class="display-3">Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-    </div>-->
-    <% if (msg) { %>
-        <div class="alert alert-success" role="alert"><%= msg %></div>
-    <% } %>
-    <div class="container">
-        <h1 class="display-3">欢迎来到Weibo</h1>
-        <p>这是一个基于 Node.js 的微博系統。</p>
-        <p>
-            <a class="btn btn-primary btn-large" href="/users/toLogin">登录</a>
-            <a class="btn btn-large" href="/users/toRegister">注册</a>
-        </p>
+<% if (msg) { %>
+    <div class="alert alert-success" role="alert" style="position:relative; top: 10px"><%= msg %></div>
+<%  } %>
+
+<% if (!user) { %>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">欢迎来到Weibo</h1>
+            <p>这是一个基于 Node.js 的微博系統。</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/users/toLogin">登录</a>
+                <a class="btn btn-large" href="/users/toRegister">注册</a>
+            </p>
+        </div>
     </div>
-</div>
+<% } %>
+
 
 <div class="container">
     <div class="row">
