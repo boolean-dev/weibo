@@ -125,7 +125,7 @@ module.exports.deleteOne=function(collection,whereObj,cb){
             cb(err, results);
         })
     });
-}
+};
 //删除多条记录
 module.exports.deleteMany=function(collection,whereObj,cb){
     _connect(function(db) {
