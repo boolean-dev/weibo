@@ -108,7 +108,7 @@ module.exports.updateMany=function(collection,whereObj,upObj,cb){
     db.collection(collection).updateMany(whereObj,upObj,function(err,results){
         cb(err,results);
     })
-}
+};
 /**********************删除**************************************/
 //根据ID来删除一条记录
 module.exports.deleteOneById = function (collection, id, cb) {
