@@ -3,9 +3,9 @@
         <img class="mb-4" src="/images/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
     </div>
-    <% if (msg) { %>
+    <% if (error) { %>
         <div class="form-label-group">
-            <div class="alert alert-danger" role="alert"><%= msg %></div>
+            <div class="alert alert-danger" role="alert"><%= error %></div>
         </div>
     <% } %>
 

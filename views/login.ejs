@@ -4,6 +4,12 @@
         <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
     </div>
 
+    <% if (error) { %>
+        <div class="form-label-group">
+            <div class="alert alert-danger" role="alert"><%= error %></div>
+        </div>
+    <% } %>
+
     <div class="form-label-group">
         <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
         <label for="inputEmail">Email address</label>

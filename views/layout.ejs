@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title><%= title %> Weibo</title>
+    <title><%= typeof(error) =="undefined" ? '' : error %> Weibo</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -26,7 +26,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
             </li>
-            <% if (!user) { %>
+            <% if ( typeof(user) =="undefined" || !user) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/toLogin">登录</a>
                 </li>
@@ -38,17 +38,6 @@
                     <a class="nav-link" href="/users/logout">登出</a>
                 </li>
             <% } %>
-            <!--<li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -56,47 +45,12 @@
         </form>
     </div>
 </nav>
+
+
 <div id="container" class="container" style="position:relative; top: 100px">
+    <%- include('components/notification') %>
     <%- body %>
 </div>
-
-
-<!--<main role="main">
-
-  &lt;!&ndash; Main jumbotron for a primary marketing message or call to action &ndash;&gt;
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-    </div>
-  </div>
-
-  <div class="container">
-    &lt;!&ndash; Example row of columns &ndash;&gt;
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-
-  </div> &lt;!&ndash; /container &ndash;&gt;
-
-</main>-->
 
 <footer class="container">
     <p>&copy; Company 2017-2019</p>

@@ -6,6 +6,7 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 var session = require("express-session");
 let flash = require('connect-flash');
+const pkg = require('./package');
 
 var MongoStore = require('connect-mongo')(session);
 var settings = require('./config/mongodb');
@@ -42,6 +43,21 @@ app.use(session({
 }));
 
 app.use(flash());
+
+// 设置模板全局常量
+app.locals.blog = {
+  title: pkg.name,
+  description: pkg.description
+}
+
+// 添加模板必需的三个变量
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user
+  res.locals.success = req.flash('success').toString()
+  res.locals.error = req.flash('error').toString()
+  next()
+})
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

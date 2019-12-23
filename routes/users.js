@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
 
 
 router.get('/toLogin',check.checkNotLogin,  function (req, res, next) {
-    res.render('login', {msg: '', user: req.session.user, title:'登录'});
+    res.render('login', {title:'登录'});
 });
 
 router.post('/login', check.checkNotLogin, function (req, res, next) {
@@ -35,16 +35,16 @@ router.post('/login', check.checkNotLogin, function (req, res, next) {
             if (password === result.password) {
                 console.log('登出成功！！')
                 req.session.user = result;
-                req.flash('msg', '注册成功！！');
+                req.flash('error', '注册成功！！');
                 res.redirect('/');
             }else {
                 console.log('登录失败！！！')
-                req.flash('msg', '密码错误!')
+                req.flash('error', '密码错误!')
                 res.redirect('/users/toLogin');
             }
         }else {
             console.log('登录失败！！！')
-            req.flash('msg', '用户不存在，请确认用户名是否正确!')
+            req.flash('error', '用户不存在，请确认用户名是否正确!')
             res.redirect('/users/toLogin');
         }
     });
@@ -54,7 +54,7 @@ router.post('/login', check.checkNotLogin, function (req, res, next) {
 router.get('/toRegister', check.checkNotLogin, function (req, res, next) {
     console.log(req.body);
     console.log(req.params);
-    res.render('register', {msg: '', user: req.session.user, title:'注册'});
+    res.render('register', {user: req.session.user, title:'注册'});
 });
 
 // 注册
@@ -68,7 +68,7 @@ router.post('/register', check.checkNotLogin, function (req, res, next) {
     // 判断密码是否相等
     if (confirmPassword !== password) {
         return res.render('register', {
-            msg: '密码不一致，请重新注册！'
+            error: '密码不一致，请重新注册！'
         })
     }
 
@@ -85,7 +85,7 @@ router.post('/register', check.checkNotLogin, function (req, res, next) {
         }
         if (results) {
             return res.render('register', {
-                msg: '用户名已存在，请重新注册！'
+                error: '用户名已存在，请重新注册！'
             })
         }
 
@@ -94,7 +94,7 @@ router.post('/register', check.checkNotLogin, function (req, res, next) {
                 throw err;
             }
             req.session.user = user;
-            req.flash('msg', '注册成功！！');
+            req.flash('success', '注册成功！！');
             // res.render('index', {msg: "注册成功!!", user: req.session.user});
             res.redirect('/');
         });
@@ -104,7 +104,7 @@ router.post('/register', check.checkNotLogin, function (req, res, next) {
 
 router.get('/logout', check.checkLogin, function (req, res, next){
     req.session.user = null;
-    req.flash('msg', '退出成功！！');
+    req.flash('success', '退出成功！！');
     res.redirect('/');
 });
 
